@@ -18,11 +18,14 @@ type Message = {
 const ChatMessage = ({ message }: { message: Message }) => {
   const { user } = useAuth();
   const isMine = user?.uid === message.uid;
+  const avatarURL = isMine
+    ? user?.photoURL ?? message.photoURL
+    : message.photoURL;
 
   return (
     <Box sx={styles.row({ isMine })}>
       <Avatar
-        src={message.photoURL}
+        src={avatarURL ?? ""}
         alt={message.displayName}
         sx={styles.avatar}
       />

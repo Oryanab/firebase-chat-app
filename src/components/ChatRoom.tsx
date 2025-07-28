@@ -1,4 +1,3 @@
-// components/ChatRoom.tsx
 import { Box, TextField, IconButton, CircularProgress } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import { colors } from "../shared/constants";

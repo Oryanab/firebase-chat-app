@@ -55,10 +55,7 @@ export const ChatProvider = ({ children }: { children: React.ReactNode }) => {
     orderBy("createdAt", "asc")
   );
 
-  const [messages, loading, error] =
-    useCollectionData<ChatMessage>(messagesQuery);
-
-  console.log({ loading, error, messages });
+  const [messages, loading] = useCollectionData<ChatMessage>(messagesQuery);
 
   const handleChangeChatRoom = (room: string) => setSelectedChatRoom(room);
   const sendMessage = async (text: string) => {
