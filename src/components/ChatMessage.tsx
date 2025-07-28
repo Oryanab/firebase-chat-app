@@ -20,27 +20,24 @@ const ChatMessage = ({ message }: { message: Message }) => {
   const isMine = user?.uid === message.uid;
 
   return (
-    <Box
-      sx={{
-        ...styles.row,
-        flexDirection: isMine ? "row-reverse" : "row",
-      }}
-    >
+    <Box sx={styles.row({ isMine })}>
       <Avatar
         src={message.photoURL}
         alt={message.displayName}
         sx={styles.avatar}
       />
 
-      <Box sx={isMine ? styles.bubbleMine : styles.bubbleOther}>
-        <Typography sx={styles.meta}>
+      <Box sx={styles.column({ isMine })}>
+        <Box sx={styles.bubble({ isMine })}>
+          <Typography sx={styles.text}>{message.text}</Typography>
+        </Box>
+
+        <Typography sx={styles.meta({ isMine })}>
           {message.displayName} •{" "}
           {message.createdAt?.seconds
             ? dayjs.unix(message.createdAt.seconds).fromNow()
             : "sending…"}
         </Typography>
-
-        <Typography sx={styles.text}>{message.text}</Typography>
       </Box>
     </Box>
   );
@@ -49,37 +46,42 @@ const ChatMessage = ({ message }: { message: Message }) => {
 export default ChatMessage;
 
 const styles = StyleSheet.create({
-  row: {
+  row: ({ isMine }: { isMine: boolean }) => ({
     display: "flex",
+    flexDirection: isMine ? "row-reverse" : "row",
     alignItems: "flex-start",
-    gap: 8,
-  },
+    gap: 4,
+  }),
+
+  column: ({ isMine }: { isMine: boolean }) => ({
+    display: "flex",
+    flexDirection: "column",
+    alignItems: isMine ? "flex-end" : "flex-start",
+    maxWidth: "75%",
+  }),
+
   avatar: {
     width: 32,
     height: 32,
   },
-  bubbleMine: {
-    maxWidth: "70%",
-    background: colors.blurple,
+
+  bubble: ({ isMine }: { isMine: boolean }) => ({
+    background: isMine ? colors.blurple : colors.grey,
     color: colors.white,
     px: 1.5,
     py: 1,
-    borderRadius: 8,
-  },
-  bubbleOther: {
-    maxWidth: "70%",
-    background: colors.grey,
-    color: colors.white,
-    px: 1.5,
-    py: 1,
-    borderRadius: 8,
-  },
-  meta: {
-    fontSize: 12,
-    fontWeight: 600,
-    mb: 0.5,
-  },
+    borderRadius: 5,
+  }),
+
   text: {
     fontSize: 14,
+    wordBreak: "break-word",
   },
+
+  meta: ({ isMine }: { isMine: boolean }) => ({
+    marginTop: 2,
+    fontSize: 11,
+    color: "#ADB3BA",
+    textAlign: isMine ? "right" : "left",
+  }),
 });

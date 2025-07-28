@@ -4,9 +4,7 @@ import { useAuth } from "../providers/authProvider";
 import { Logout } from "@mui/icons-material";
 import { colors } from "../shared/constants";
 
-type Props = {};
-
-const Topbar = (props: Props) => {
+const Topbar = () => {
   const { user, logout } = useAuth();
   return (
     <Box sx={styles.container}>
