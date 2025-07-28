@@ -3,7 +3,7 @@
 **Chatty** is a simple, real-time group chat application built using **React**, **TypeScript**, **Vite**, and **Firebase**. It features multiple chat rooms, Google authentication, and responsive design with live message updates.
 
 🔗 **Live Site**:  
-https://firebase-chat-d7vuffs8z-oryans-projects-f49e6feb.vercel.app/
+https://firebase-chat-app-silk-chi.vercel.app/
 
 ---
 
