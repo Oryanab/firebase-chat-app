@@ -10,8 +10,7 @@ const SignIn = () => {
     const auth = getAuth();
     signInWithPopup(auth, provider)
       .then((result) => {
-        const user = result.user;
-        console.log("Signed in as:", user.displayName);
+        console.log("Signed in as:", result.user.displayName);
       })
       .catch((error) => {
         console.error("Google sign-in error:", error);
@@ -21,57 +20,68 @@ const SignIn = () => {
   return (
     <Box sx={styles.container}>
       <Box sx={styles.loginForm}>
-        <Typography sx={styles.header}>Chatty</Typography>
-        <Typography sx={styles.subheader}>
-          Hello, Please Register/Sign in with your Google Account
+        <Typography variant="h4" sx={styles.header}>
+          👋 Welcome to Chatty
         </Typography>
-        <Button sx={styles.loginBtn} onClick={signInWithGoogle}>
+        <Typography sx={styles.subheader}>
+          Sign in with your Google account to continue chatting
+        </Typography>
+        <Button onClick={signInWithGoogle} sx={styles.loginBtn}>
           Continue with Google
         </Button>
       </Box>
     </Box>
   );
 };
+
 export default SignIn;
 
 const styles = StyleSheet.create({
   container: {
-    height: "100%",
-    width: "100%",
+    height: "100vh",
+    width: "100vw",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: colors.darkGrey,
   },
   loginForm: {
-    height: "300px",
-    width: "400px",
-    background: colors.blurple,
-    boxShadow: "0 4px 14px rgba(0, 0, 0, 0.15)",
-    borderRadius: "20px",
+    width: 360,
+    padding: "32px 24px",
+    background: `linear-gradient(145deg, ${colors.grey}, ${colors.darkGrey})`,
+    borderRadius: "16px",
+    boxShadow: "0 6px 18px rgba(0,0,0,0.25)",
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
-    padding: "20px",
-    gap: "40px",
+    gap: "24px",
+    textAlign: "center",
     color: colors.white,
-    justifyContent: "center",
   },
   header: {
-    fontWeight: "bold",
-    fontSize: "28px",
+    fontWeight: 700,
+    fontSize: "24px",
+    color: colors.white,
   },
   subheader: {
-    fontWeight: "500",
     fontSize: "14px",
-    width: "70%",
-    textAlign: "left",
+    fontWeight: 400,
+    color: colors.lightGrey,
   },
   loginBtn: {
-    background: colors.white,
-    textTransform: "none",
+    mt: 2,
+    backgroundColor: colors.white,
     color: colors.blurple,
     fontWeight: "bold",
-    fontSize: "16px",
-    letterSpacing: 0.8,
+    textTransform: "none",
+    padding: "10px 20px",
+    fontSize: "15px",
+    borderRadius: "8px",
+    boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+    transition: "all 0.2s ease",
+    "&:hover": {
+      opacity: 0.9,
+      boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+      backgroundColor: colors.white,
+    },
   },
 });

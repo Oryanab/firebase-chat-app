@@ -7,8 +7,19 @@ export const chatRoomNames = [
   "Tech Trends",
   "Crypto Cave",
   "Startup Zone",
+  "Gaming Lobby",
+  "Design Den",
+  "Random Banter",
+  "Quiet Corner",
+  "AI Alley",
+  "Frontend Fanatics",
+  "Backend Bunker",
+  "The Debugging Dojo",
+  "UX/UI Underground",
+  "Idea Exchange",
+  "Remote Rants",
+  "Daily Standup",
 ];
-
 export const colors = {
   blurple: "#5865F2", // Discord brand blue-purple
   fuchsia: "#EB459E", // Secondary accent
