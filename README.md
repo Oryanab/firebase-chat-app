@@ -13,10 +13,10 @@ https://firebase-chat-d7vuffs8z-oryans-projects-f49e6feb.vercel.app/
 > 📍 Placeholders below:
 
 - Home/Login  
-  ![Login screenshot](./assets/screenshots/login.png)
+  ![Login screenshot](/screenshots/login.png)
 
 - Chat Room  
-  ![Chat UI screenshot](./assets/screenshots/chat-room.png)
+  ![Chat UI screenshot](/screenshots/chat-room.png)
 
 ---
 
